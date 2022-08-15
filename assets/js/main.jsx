@@ -10,8 +10,8 @@ const pages = import.meta.glob('./pages/**/*.jsx');
 console.log(pages);
 
 document.addEventListener('DOMContentLoaded', () => {
-    // const csrfToken = document.querySelector('meta[name=csrf-token]').content;
-    // axios.defaults.headers.common['X-CSRF-Token'] = csrfToken;
+    const csrfToken = document.querySelector('meta[name=csrf-token]').content;
+    axios.defaults.headers.common['X-CSRFToken'] = csrfToken;
 
     InertiaProgress.init();
 

@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_vite',
-    'inertia'
+    'inertia',
+    'js_routes'
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,8 @@ STATICFILES_DIRS = [DJANGO_VITE_ASSETS_PATH]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 INERTIA_LAYOUT = 'base.html'
+
+JS_ROUTES_INCLUSION_LIST = [
+    'home',
+    'contact'
+]
