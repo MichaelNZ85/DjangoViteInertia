@@ -1,11 +1,9 @@
 import {resolve} from 'path';
-import react from '@vitejs/plugin-react'
+import vue from '@vitejs/plugin-vue'
 
 module.exports = {
   plugins: [
-    react({
-      include: '**/*.disabled'
-    }),
+    vue()
   ],
   root: resolve('./assets'),
   base: '/static/',
@@ -19,7 +17,7 @@ module.exports = {
     },
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.vue'],
   },
   build: {
     outDir: resolve('./assets/dist'),
@@ -29,7 +27,7 @@ module.exports = {
     target: 'es2015',
     rollupOptions: {
       input: {
-        main: resolve('./assets/js/main.jsx'),
+        main: resolve('./assets/js/main.js'),
       },
       output: {
         chunkFileNames: undefined,

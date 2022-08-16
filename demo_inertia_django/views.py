@@ -3,11 +3,11 @@ from inertia import render
 
 def home(request):
     return render(request, 'Events/Index', props={
-        'events': ['Big Purrs', 'Meow meow', 'Furry Friends Meetup']
+        'events': ['An event', 'another event', 'Yet another event']
     })
 
 
 def contact(request):
     return render(request, 'Contact', props={
-        'support_email': 'meow@bigpurrs.mew'
+        'support_email': 'test@example.org'
     })

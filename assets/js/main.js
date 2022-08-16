@@ -1,11 +1,11 @@
-import { createRoot } from 'react-dom/client';
-import { createInertiaApp } from '@inertiajs/inertia-react';
+import { createApp, h } from 'vue';
+import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import axios from 'axios';
-import Layout from './components/Layout.jsx';
 import '../css/style.css';
+import Layout from './components/Layout.vue';
 
-const pages = import.meta.glob('./pages/**/*.jsx');
+const pages = import.meta.glob('./pages/**/*.vue');
 
 console.log(pages);
 
@@ -17,13 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createInertiaApp({
         resolve: async name => {
-            const page = (await pages[`./pages/${name}.jsx`]()).default;
+            const page = (await pages[`./pages/${name}.vue`]()).default;
             page.layout = page.layout || Layout;
-
             return page;
         },
-        setup({ el, App, props }) {
-            createRoot(el).render(<App {...props} />);
+        setup({ el, App, props, plugin }) {
+            createApp({render: () => h(App, props)})
+                .use(plugin)
+                .mount(el)
         },
     });
 });
